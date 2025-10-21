@@ -105,3 +105,29 @@ Private repository. For private/internal use only. Project status: under develop
 
 ---
 Last updated: 2025-10-21
+
+## Summary of Approach and Findings
+
+-- Approach
+The approach chosen for this exercise was to use Postman to create mock API server for the purposes of simulating responses that would come from a "real API". Two basic responses were used. Using the example request provided, a simple modification of the request to change the "station_id" to distinguish between the requests and expected responses.
+
+I used the requests library to hit the endpoint with appropriate "POST" format. I then parsed json response and passed the response into functions I created to validate against the acceptance criteria.
+
+Some items required further details to determine proper test methods. For example: What are the requirements for verifying tank levels? What are the thresholds for the delivery constraints? How do you determine cost optimization with the given data? For these items I added a "#TODO" tag along with a brief note for further work to be done in those areas.
+
+There are many ways to structure the tests. I chose to create two(2) tests that called the existing methods to minimize redundancy in my code. Additional cleanup and refactoring may be necessary to optimize my current approach, but this is what I followed for the sake of time contraints.
+
+Comments were added to the code to describe the functions. In addition, the acceptance criteria was also added to the related comments for ease of traceability.
+
+Future API testing considerations:
+ - Clean up formatting
+ - Create a spreadsheet/datatable to run through the various scenarios
+ - Create a JSON request template to pass the datatable information into to format each request for submission
+ 
+
+-- Findings
+Based on the acceptance criteria, there are some items that don't necessarily align it the test data provided:
+1) In the example request body and successful response provided, the "demand_Unit" was listed as "liters" in the request, but the response had "gallons". I would yield a failure based on the acceptance criteria.
+2) There are other factors that are not clear. For example, the tank_level_percent is a percentage, but is the tank_level_threshold does not appear to be. Even though it is east to assume, it would be go to verify that any calculations done on these fields are accurate and properly formatted.
+3) The API Outputs (Response Fields) lists "notes (string): Additional notes or explanations", but no example is provided in the examples of what the "notes" field should look like. It would appear that the "fallback" field could be the intended area for testing, but this also should not be assumed. It is possible that the field is missing in the response or was incorrectly named by the developer or in the requirements.
+4) I would recommend doing both positive and negative testing of the scenarios. Boundary tests are also recommendd for to verify that the values accepted by and returned from the API fall within an appropriate range.
