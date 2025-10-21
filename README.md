@@ -2,6 +2,8 @@
 
 This repository contains pytest-based tests for the fictional Smart Fuel Allocation API. The test suite demonstrates typical API test patterns and can be run locally with Python and pytest.
 
+NOTE: To modify the server responses, I would need to update them on the Postman Mock Server.
+
 ## Contents
 
 - `data/` — example request/response JSON files used by tests
@@ -123,7 +125,7 @@ Future API testing considerations:
  - Clean up formatting
  - Create a spreadsheet/datatable to run through the various scenarios
  - Create a JSON request template to pass the datatable information into to format each request for submission
- 
+
 
 -- Findings
 Based on the acceptance criteria, there are some items that don't necessarily align it the test data provided:
