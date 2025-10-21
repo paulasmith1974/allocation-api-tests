@@ -1,110 +1,107 @@
-1. Project Title and Description:
-This is a test repository for a fictional project called Smart Fuel Allocation API.
-The purpose is to demonstrate various python test methods that can be executed to test the fictional API.
+# Smart Fuel — Allocation API Tests
 
-2. Table of Contents:
-N/A
+This repository contains pytest-based tests for the fictional Smart Fuel Allocation API. The test suite demonstrates typical API test patterns and can be run locally with Python and pytest.
 
-3. Installation Instructions:
-Detailed steps on how to set up and install the project locally, including any prerequisites, dependencies, or configuration steps.
+## Contents
 
-4. Usage Instructions:
-These instructions are specific to vscode, so behavior may vary a little depending on the Operating System and the Code Editor of choice:
-Here are instructions for running pytest from the command line with various options: 
-    1. Basic Execution: 
-    run all tests. 
-        pytest
+- `data/` — example request/response JSON files used by tests
+- `tests/` — pytest test files (currently `test_sfaapi.py`)
+- `pyproject.toml` — project metadata and test dependencies
 
-    Run tests in a specific file. 
-        pytest test_filename.py
+## Prerequisites
 
-    Run tests in a specific directory. 
-        pytest path/to/directory/
+- Python 3.8+ (recommend 3.10 or newer)
+- Git (optional)
+- A POSIX-like shell or PowerShell (instructions below use PowerShell on Windows)
 
-    2. Selecting Specific Tests: 
+This project uses standard pytest for running tests. No external services are required to run the included tests.
 
-    • Run a specific test function within a module: 
+## Recommended setup (using venv + pip)
 
-        pytest test_module.py::test_function
+1. Open PowerShell and create a virtual environment:
 
-    • Run a specific test method within a class: 
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
-        pytest test_module.py::TestClass::test_method
+2. Install dependencies from `pyproject.toml`. If you use pip directly, you can install pytest:
 
-    Run tests matching a keyword expression. 
-        pytest -k "MyClass and not method"
+```powershell
+python -m pip install --upgrade pip
+pip install pytest
+```
 
-    (Runs tests with "MyClass" in their name but not "method".) 
+If you prefer Poetry (project includes `pyproject.toml`), see the Poetry section below.
 
-    • Run tests marked with a specific marker: 
+## Optional: setup with Poetry
 
-        pytest -m slow
+If you use Poetry to manage the project, install Poetry first (https://python-poetry.org). Then from the project root:
 
-    (Runs tests decorated with @pytest.mark.slow.) 
-    3. Output and Debugging Options: 
+```powershell
+poetry install
+poetry shell
+```
 
-    • Show verbose output (more details on test execution): 
+Poetry will create an isolated environment and install dependencies defined in `pyproject.toml`.
 
-        pytest -v
+## Running tests
 
-    • Show local variables in tracebacks for failed tests: 
+From the project root (where `pyproject.toml` is located) run pytest.
 
-        pytest --showlocals
+PowerShell example:
 
-    or 
-        pytest -l
-
-    Enter the debugger on test failure. 
-        pytest --pdb
-
-    • Show output from print statements in tests: 
-
-        pytest -s
-
-    4. Running Failed Tests: 
-
-    • Run only the tests that failed in the previous run: 
-
-        pytest --lf
-
-    • Run failed tests first, then the rest: 
-
-        pytest --ff
-
-    5. Configuration: 
-
-    • Set default command-line options in pytest.ini: 
-
-    Create a pytest.ini file in your project root and add options under [pytest] like: 
-        [pytest]
-        addopts = -v --showlocals
-
-5. Contribution Guidelines:
-N/A
-
-6. License Information:
-For private use only. This project is not meant to be public
-
-7. Credits and Acknowledgments:
-python
+```powershell
+# Run all tests
 pytest
-pytest-mocks
-date-time
-json
-configured for vscode
 
-8. Contact Information:
-Paul Smith
-email: paul_a_smith_1974@yahoo.com
+# Run a single test file
+pytest tests/test_sfaapi.py
 
-Optional Sections:
+# Run a specific test by nodeid
+pytest tests/test_sfaapi.py::test_some_function
+```
 
-Troubleshooting and FAQs: Common issues and their solutions.
-As this is a work in progress, errors may still be found in the code.
+Common pytest flags:
 
-Changelog: N/A
+- `-v` verbose
+- `-s` show print output
+- `--maxfail=1` stop after first failure
+- `-k <expr>` run tests that match the expression
 
-Badges: N/A
+## Running tests in VS Code
 
-Project Status: Under development
-Last Updated: 2025-10-20
+1. Open the folder in VS Code.
+2. Install the Python extension.
+3. Select the interpreter from `.venv` (or Poetry environment).
+4. Use the Test Explorer or run pytest from the integrated terminal.
+
+## Troubleshooting
+
+- "pytest: command not found" — ensure virtual environment is activated or use `python -m pytest`.
+- Dependency errors — install pytest into the active environment: `pip install pytest` or use `poetry install`.
+- If PowerShell blocks script execution when activating venv, you may need to set the execution policy (run PowerShell as admin):
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+## Example: quick smoke test
+
+1. Activate the virtualenv (see above).
+2. Run `pytest -q` and expect output like `1 passed` (or tests failing if issues exist):
+
+```powershell
+pytest -q
+```
+
+## Contact
+
+Paul Smith — paul_a_smith_1974@yahoo.com
+
+## License and Status
+
+Private repository. For private/internal use only. Project status: under development.
+
+---
+Last updated: 2025-10-21
