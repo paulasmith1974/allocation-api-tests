@@ -1,0 +1,8 @@
+{
+    "station_id": "STN-101",
+    "recommended_volume": 6200,
+    "recommended_unit": "gallons",
+    "suggested_delivery_time": "2025-09-25T10:30:00",
+    "alerts": [],
+    "fallback": "Recommendation based on balanced optimization."
+}

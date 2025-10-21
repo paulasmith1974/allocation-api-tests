@@ -1,0 +1,12 @@
+{
+    "station_id": "STN-101",
+    "forecasted_demand": 8000,
+    "demand_unit": "liters",
+    "delivery_window": {
+        "start": "2025-09-25T09:00:00",
+        "end": "2025-09-25T13:00:00"
+    },
+    "tank_level_percent": 28,
+    "tank_level_threshold": 20,
+    "optimization_mode": "Balanced"
+}

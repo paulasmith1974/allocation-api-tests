@@ -1,0 +1,11 @@
+{
+    "station_id": "STN-105",
+    "recommended_volume": 0,
+    "recommended_unit": "gallons",
+    "suggested_delivery_time": null,
+    "alerts": [
+        "No available delivery trucks within selected window",
+        "Telemetry data is stale: last update 2025-09-22T17:42:10"
+    ],
+    "fallback": "Recommendation adjusted due to low tank level."
+}
